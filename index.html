@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mad Lib</title>
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/nevermind-bauhaus');
+        body {
+            font-family: 'Impact', sans-serif;
+            background-color: #61a5dc;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+        form {
+            background-image: url('image.jpg');
+            background-color: #fff;
+            padding: 20px 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 350px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        h1, p {
+            color: black;
+            font-family: 'Impact', sans-serif;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-family: 'Impact', sans-serif;
+        }
+        label, input[type="text"], input[type="submit"] {
+            display: block;
+            width: 100%;
+        }
+        label {
+            margin: 10px 0 5px;
+            color: #555;
+        }
+        input[type="text"] {
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="text"]:focus {
+            border-color: #7a42f4;
+        }
+        input[type="submit"] {
+            background-color: #7a42f4;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        input[type="submit"]:hover {
+            background-color: black;
+        }
+        #output {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 350px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <form id="madlibForm">
+            <h2>Create Your Mad Lib</h2>
+            <label for="adjective">Adjective:</label>
+            <input type="text" id="adjective" name="adjective">
+            <label for="pluralNoun">Plural Noun:</label>
+            <input type="text" id="pluralNoun" name="pluralNoun">
+            <label for="personName">Person's Name:</label>
+            <input type="text" id="personName" name="personName">
+            <label for="verb">Verb:</label>
+            <input type="text" id="verb" name="verb">
+            <label for="noun">Noun:</label>
+            <input type="text" id="noun" name="noun">
+            <input type="submit" value="Create Mad Lib">
+        </form>
+    </div>
+    <hr>
+    <div>
+        <h1>ADDENDUM</h1>
+        <h2><b>Client-Side Validation:</b></h2>
+        <p>
+            <ul>
+                <li>Incorporating client-side validation using JavaScript can enhance user experience by providing instant feedback on form inputs, such as highlighting required fields or validating input formats.</li>
+                <li>Common validation techniques include checking for empty fields, validating email addresses, ensuring numerical inputs for specific fields, and confirming password matches in registration forms.</li>
+                <li>By combining client-side validation with server-side validation, you can create a robust form submission process that minimizes errors and improves data integrity.</li>
+            </ul>
+        </p>
+        <h2><b>Responsive Design:</b></h2>
+        <p>
+            <ul>
+                <li>Implementing responsive design techniques ensures that the Mad Lib form and resulting story are accessible and visually appealing across various devices and screen sizes.</li>
+                <li>Consider using media queries in CSS to adjust layout and styling based on device characteristics, such as screen width, orientation, and pixel density.</li>
+                <li>Responsive design enhances usability by optimizing content layout and readability, contributing to a seamless user experience regardless of the user's device.</li>
+            </ul>
+        </p>
+        <h2><b>Accessibility Considerations:</b></h2>
+        <p>
+            <ul>
+                <li>Adhering to web accessibility standards, such as WCAG (Web Content Accessibility Guidelines), ensures that the Mad Lib form is usable by individuals with disabilities or diverse browsing preferences.</li>
+                <li>Include alternative text for images, use semantic HTML elements for proper document structure, and ensure keyboard navigation and screen reader compatibility for enhanced accessibility.</li>
+                <li>Regularly testing the application with accessibility tools and user feedback helps identify and address potential accessibility barriers, promoting inclusivity and usability for all users.</li>
+            </ul>
+        </p>
+    </div>    
+<hr>
+        <hr>
+<div>
+     <footer>
+        <p>Last updated: 
+            <span id="lastModified"></span>
+        </p>
+    </footer>
+    <script type="text/javascript">
+         var x = document.lastModified;
+         document.getElementById('lastModified').textContent = x;
+    </script>
+    
+    <script>
+        document.getElementById('madlibForm').onsubmit = function() {
+            const adjective = document.getElementById('adjective').value;
+            const pluralNoun = document.getElementById('pluralNoun').value;
+            const personName = document.getElementById('personName').value;
+            const verb = document.getElementById('verb').value;
+            const noun = document.getElementById('noun').value;
+
+            const madLib = `This night, I encountered a ${adjective} group of ${pluralNoun} that remind me of ${personName}. Consequently, I chose to ${verb} near the ${noun}.`;
+
+            // Redirect to the new page with the Mad Lib result
+            window.location.href = `madlib-result.html?result=${encodeURIComponent(madLib)}`;
+            return false; // Prevent the default form submission
+        };
+    </script>
+</body>
+</html>
